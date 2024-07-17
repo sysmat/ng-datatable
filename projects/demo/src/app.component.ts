@@ -20,7 +20,7 @@ type Person = {
   imports: [CommonModule, DataTableModule, FormsModule, DataFilterPipe],
 })
 export class AppComponent implements OnInit {
-  public data: any[];
+  public data: Person[];
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy: SortBy = "email";
@@ -40,11 +40,11 @@ export class AppComponent implements OnInit {
     return +num;
   }
 
-  public sortByWordLength = (a: any) => {
+  public sortByWordLength = (a: Person) => {
     return a.city.length;
   };
 
-  public remove(item: any) {
+  public remove(item: Person) {
     const index = this.data.indexOf(item);
     if (index > -1) {
       this.data.splice(index, 1);
