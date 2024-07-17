@@ -20,11 +20,11 @@ type Person = {
   imports: [CommonModule, DataTableModule, FormsModule, DataFilterPipe],
 })
 export class AppComponent implements OnInit {
-  public data: Person[];
-  public filterQuery = "";
-  public rowsOnPage = 10;
-  public sortBy: SortBy = "email";
-  public sortOrder: SortOrder = "asc";
+  data: Person[];
+  filterQuery = "";
+  rowsOnPage = 10;
+  sortBy: SortBy = "email";
+  sortOrder: SortOrder = "asc";
 
   constructor(private http: HttpClient) {}
 
@@ -36,15 +36,19 @@ export class AppComponent implements OnInit {
     });
   }
 
-  public toInt(num: string) {
+  toInt(num: string) {
     return +num;
   }
 
-  public sortByWordLength = (a: Person) => {
+  cast = (a: any): Person[] => {
+    return a as Person[];
+  };
+
+  sortByWordLength = (a: Person) => {
     return a.city.length;
   };
 
-  public remove(item: Person) {
+  remove(item: Person) {
     const index = this.data.indexOf(item);
     if (index > -1) {
       this.data.splice(index, 1);

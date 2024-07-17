@@ -86,15 +86,16 @@
           </tr>
         </thead>
         <tbody>
-          @for (item of mf.data; track $index) {
+          @let persons = cast(mf.data); @for (item of persons; track $index) {
+          @let person = item;
           <tr>
             <td>
-              <button (click)="remove(item)" class="btn btn-danger">X</button>
+              <button (click)="remove(person)" class="btn btn-danger">X</button>
             </td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.email }}</td>
-            <td class="text-end">{{ item.age }}</td>
-            <td>{{ item.city | uppercase }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.email }}</td>
+            <td class="text-end">{{ person.age }}</td>
+            <td>{{ person.city | uppercase }}</td>
           </tr>
 
           }
