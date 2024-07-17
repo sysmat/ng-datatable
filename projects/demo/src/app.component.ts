@@ -5,6 +5,14 @@ import { FormsModule } from "@angular/forms";
 import { DataFilterPipe } from "./data-filter.pipe";
 import { CommonModule } from "@angular/common";
 
+type Person = {
+  name: string;
+  email: string;
+  regDate: Date;
+  city: string;
+  age: number;
+};
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -21,7 +29,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>("/data.json").subscribe((data) => {
+    this.http.get<Person[]>("/data.json").subscribe((data) => {
       setTimeout(() => {
         this.data = data;
       }, 2000);
