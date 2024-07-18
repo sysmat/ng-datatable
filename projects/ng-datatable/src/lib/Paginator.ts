@@ -3,7 +3,8 @@ import {DataTable, PageEvent} from "./DataTable";
 
 @Component({
     selector: "mfPaginator",
-    template: `<ng-content></ng-content>`
+    template: `<ng-content></ng-content>`,
+    standalone: true
 })
 export class Paginator implements OnChanges {
 

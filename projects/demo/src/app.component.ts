@@ -1,6 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { DataTableModule, SortBy, SortOrder } from "ng-datatable";
+import {
+  BootstrapPaginator,
+  DataTable,
+  DefaultSorter,
+  SortBy,
+  SortOrder,
+} from "ng-datatable";
 import { FormsModule } from "@angular/forms";
 import { DataFilterPipe } from "./data-filter.pipe";
 import { inject } from "@angular/core";
@@ -18,7 +24,14 @@ type Person = {
   selector: "app-root",
   templateUrl: "./app.component.html",
   standalone: true,
-  imports: [DataTableModule, FormsModule, DataFilterPipe, UpperCasePipe],
+  imports: [
+    DataTable,
+    BootstrapPaginator,
+    DefaultSorter,
+    FormsModule,
+    DataFilterPipe,
+    UpperCasePipe,
+  ],
 })
 export class AppComponent implements OnInit {
   data: Person[];

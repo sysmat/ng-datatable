@@ -13,9 +13,10 @@ import {DataTable, SortBy, SortEvent} from "./DataTable";
             <span aria-hidden="true" aria-label="desc">▼</span>
           }
         </a>`,
-        styles: [
-            "a { cursor: pointer; }"
-        ]
+    styles: [
+        "a { cursor: pointer; }"
+    ],
+    standalone: true
 })
 export class DefaultSorter implements OnInit {
     @Input("by") sortBy: SortBy;

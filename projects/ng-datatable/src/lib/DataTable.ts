@@ -26,7 +26,8 @@ export interface DataEvent {
 
 @Directive({
     selector: "table[mfData]",
-    exportAs: "mfDataTable"
+    exportAs: "mfDataTable",
+    standalone: true
 })
 export class DataTable implements OnChanges, DoCheck {
 
