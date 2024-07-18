@@ -3,7 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { DataTableModule, SortBy, SortOrder } from "ng-datatable";
 import { FormsModule } from "@angular/forms";
 import { DataFilterPipe } from "./data-filter.pipe";
-import { CommonModule } from "@angular/common";
+import { inject } from "@angular/core";
+import { UpperCasePipe } from "@angular/common";
 
 type Person = {
   name: string;
@@ -17,7 +18,7 @@ type Person = {
   selector: "app-root",
   templateUrl: "./app.component.html",
   standalone: true,
-  imports: [CommonModule, DataTableModule, FormsModule, DataFilterPipe],
+  imports: [DataTableModule, FormsModule, DataFilterPipe, UpperCasePipe],
 })
 export class AppComponent implements OnInit {
   data: Person[];
@@ -25,11 +26,10 @@ export class AppComponent implements OnInit {
   rowsOnPage = 10;
   sortBy: SortBy = "email";
   sortOrder: SortOrder = "asc";
-
-  constructor(private http: HttpClient) {}
+  readonly #http = inject(HttpClient);
 
   ngOnInit(): void {
-    this.http.get<Person[]>("/data.json").subscribe((data) => {
+    this.#http.get<Person[]>("/data.json").subscribe((data) => {
       setTimeout(() => {
         this.data = data;
       }, 2000);
